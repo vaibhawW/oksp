@@ -7,6 +7,9 @@ services:
   - postgresql
   - memcached
 
+addons:
+  postgresql: "9.4"
+
 env:
   - DJANGO=1.9.4
 
@@ -19,6 +22,11 @@ install:
   - pip install coverage
   - pip install isort
   - pip install python-coveralls
+
+before_script:
+  - psql -c 'create database oksp;' -U postgres
+  - psql -c "create user oksp with password 'oksp' createdb;" -U postgres
+  - psql -c 'grant all privileges on database oksp to oksp;' -U postgres
 
 script:
   - cp oksp/settings/conf.sample.py oksp/settings/conf.py
