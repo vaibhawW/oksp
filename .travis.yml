@@ -17,10 +17,11 @@ before_install:
 install:
   - pip install -r requirements/production.txt
   - pip install coverage
+  - pip install isort
   - pip install python-coveralls
 
 script:
-  - cp oksp/settings/conf.sample.py oksp/setting/conf.py
+  - cp oksp/settings/conf.sample.py oksp/settings/conf.py
   - python manage.py check
   - isort -rc --check-only --diff .
   - python manage.py collectstatic --noinput
