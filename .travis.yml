@@ -25,7 +25,7 @@ install:
 
 before_script:
   - psql -c 'create database oksp;' -U postgres
-  - psql -c 'create user oksp with password \'oksp\' creatdb;' -U postgres
+  - psql -c "create user oksp with password 'oksp' creatdb;" -U postgres
   - psql -c 'grant all privileges on database oksp to oksp;' -U postgres
 
 script:
