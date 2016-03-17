@@ -1,0 +1,31 @@
+language: python
+
+python:
+  - 3.5
+
+services:
+  - postgresql
+  - memcached
+
+env:
+  - DJANGO=1.9.4
+
+before_install:
+  - export DJANGO_SETTINGS_MODULE=oksp.settings.production
+  - export PYTHONPATH=$HOME/stabiitb/oksp
+
+install:
+  - pip install -r requirements/production.txt
+  - pip install coverage
+  - pip install python-coveralls
+
+script:
+  - cp oksp/settings/conf.sample.py oksp/setting/conf.py
+  - python manage.py check
+  - isort -rc --check-only --diff .
+  - python manage.py collectstatic --noinput
+  - python manage.py migrate --noinput
+  - coverage run --source '.' manage.py test
+
+after_success:
+  - coveralls
