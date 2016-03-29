@@ -6,4 +6,3 @@ This list include people who added feature, fixed bugs, reported bugs and made t
 
 
 Dheerendra Rathor <dheeru.rathor14@gmail.com>
-Vinay Chandra <vinaychandra.dommeti@gmail.com>
