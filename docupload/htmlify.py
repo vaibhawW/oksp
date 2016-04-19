@@ -1,6 +1,8 @@
 from pydocx import PyDocX
 import markdown2
 
+import subprocess
+
 class HTMLifier():
 
     def __init__(self, image_base_path='.', doc_base_path='.'):
@@ -16,6 +18,8 @@ class HTMLifier():
             html = HTMLifier.doc_convert(doc_file)
         elif ext in ('md', 'markdown'):
             html = HTMLifier.md_convert(doc_file)
+        elif ext in ('tex', 'latex'):
+            html = HTMLifier.tex_convert(doc_file)
 
         with open(doc_dir + file_name + '.html', 'wb') as doc_stored:
             doc_stored.write(bytes(html,'utf-8'))
@@ -31,3 +35,16 @@ class HTMLifier():
                 md.write(chunk)
 
         return markdown2.markdown_path(tmp_loc)
+
+    def tex_convert(doc_file):
+        tmp_loc = '/tmp/tex_uploaded.tex'
+
+        with open(tmp_loc,'wb') as tex:
+            for chunk in doc_file.chunks():
+                tex.write(chunk)
+
+        with open(tmp_loc,'rb') as tex:
+            p = subprocess.Popen(["tth"], stdin=tex, stdout=subprocess.PIPE)
+            out, err = p.communicate()
+
+            return str(out, 'utf-8')
