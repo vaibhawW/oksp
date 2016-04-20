@@ -144,3 +144,5 @@ staticfiles/*
 
 !.gitkeep
 oksp/settings/conf.py
+
+docupload/docs/*
