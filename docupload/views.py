@@ -41,10 +41,11 @@ def upload(request):
             doc.save()
     return HttpResponseRedirect('/doc/')
 
-def display(request, id):
-    db_doc = Documentation.objects.filter(id=id)[0]
 
-    print(db_doc)
+def display(request, doc_id):
+    '''View for /doc/<doc_id>/'''
+
+    db_doc = Documentation.objects.filter(id=doc_id)[0]
 
     with open('docupload/docs/' + db_doc.doc_file) as doc:
         return HttpResponse(doc)

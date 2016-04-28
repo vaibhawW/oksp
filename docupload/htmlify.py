@@ -2,8 +2,8 @@
 HTMLify: Convert any fileformat supported by pandoc to HTML5
 '''
 
-import subprocess
 import pypandoc
+
 
 def get_html(doc_file):
     '''Uses pypandoc to convert uploaded file to HTML5'''
