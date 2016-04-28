@@ -37,3 +37,5 @@ class HTMLifier():
 
         with open(doc_dir + file_name + '.html', 'wb') as doc_stored:
             doc_stored.write(bytes(html, 'utf-8'))
+
+        return file_name + '.html'

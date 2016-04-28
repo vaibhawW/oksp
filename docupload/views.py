@@ -1,5 +1,7 @@
 import os
 
+from datetime import datetime
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
@@ -32,5 +34,18 @@ def upload(request):
     if request.method == 'POST':
         form = DocUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            html.convert(request.FILES['doc_file'])
+            filename = html.convert(request.FILES['doc_file'])
+            doc = Documentation(name=request.POST['name'],
+                                doc_file=filename,
+                                pub_date=datetime.now())
+            doc.save()
     return HttpResponseRedirect('/doc/')
+
+def display(request, id):
+    db_doc = Documentation.objects.filter(id=id)[0]
+
+    print(db_doc)
+
+    with open('docupload/docs/' + db_doc.doc_file) as doc:
+        return HttpResponse(doc)
+
