@@ -2,6 +2,7 @@
 HTMLify: Convert any fileformat supported by pandoc to HTML5
 '''
 
+import os
 import pypandoc
 
 
@@ -13,8 +14,11 @@ def get_html(doc_file):
     with open(tmp_loc, 'wb') as tmp_file:
         for chunk in doc_file.chunks():
             tmp_file.write(chunk)
+    html = pypandoc.convert(tmp_loc, 'html5')
+    os.remove(tmp_loc)
 
-    return pypandoc.convert(tmp_loc, 'html5')
+    return html
+
 
 class HTMLifier():
     '''
