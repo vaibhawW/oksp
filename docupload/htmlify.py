@@ -3,6 +3,7 @@ HTMLify: Convert any fileformat supported by pandoc to HTML5
 '''
 
 import os
+
 import pypandoc
 
 
@@ -33,7 +34,7 @@ class HTMLifier():
         '''Middleware function to interface with different <format>_convert functions'''
 
         file_name = str(doc_file)
-        ext = file_name.split('.')[-1]
+        ext = file_name.split('.')[-1] 
         file_name = file_name[:len(file_name) - len(ext) - 1]
         doc_dir = self.doc_base_path
 
