@@ -7,6 +7,8 @@ import os
 import pypandoc
 from bs4 import BeautifulSoup
 
+from django.conf import settings
+
 
 def get_html(doc_file):
     '''Uses pypandoc to convert uploaded file to HTML5'''
@@ -22,7 +24,6 @@ def get_html(doc_file):
         extra_args=['--extract-media=/tmp']
         )
 
-    os.remove(tmp_loc)
     return html
 
 def shift_media(html, doc_name, media_dir):
