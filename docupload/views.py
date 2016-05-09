@@ -1,10 +1,10 @@
 import os
 from datetime import datetime
 
+from django.core.files.base import ContentFile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
-from django.core.files.base import ContentFile
 
 from .forms import DocUploadForm
 from .htmlify import HTMLifier
