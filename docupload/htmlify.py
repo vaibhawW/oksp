@@ -63,6 +63,7 @@ class HTMLifier():
         if ext == 'Raw content':
             html = get_html(doc_file, 'md')
             html = shift_media(html, file_name, '/tmp/media')
+            file_name = doc_file.name
         else:
             html = get_html(doc_file)
             html = shift_media(html, file_name, '/tmp/media')

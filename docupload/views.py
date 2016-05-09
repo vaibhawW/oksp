@@ -36,11 +36,13 @@ def markdown_editor(request):
     if text and title:
         #Save this file
         myfile = ContentFile(bytes(text, 'utf-8'))
+        myfile.name = title
         filename = html.convert(myfile)
         doc = Documentation(name=title,
                             doc_file=filename,
                             pub_date=datetime.now())
         doc.save()
+        return HttpResponseRedirect('/doc/')
 
 
 
