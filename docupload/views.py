@@ -29,6 +29,19 @@ def editor_choice(request):
     return render(request, "docupload/editor_choice.html")
 
 def markdown_editor(request):
+    html = HTMLifier(doc_base_path=DOC_DIR)
+    text = request.GET.get('text')
+    title = request.GET.get('title')
+    if text and title:
+        file = open(title + '.docx', 'w')
+        file.write(text)
+        file.close()
+        filename = html.convert(file)
+        doc = Documentation(name=request.POST['name'],
+                            doc_file=filename,
+                            pub_date=datetime.now())
+        doc.save()
+
     return render(request, "docupload/markdown.html")
 
 def wysiwyg_editor(request):
