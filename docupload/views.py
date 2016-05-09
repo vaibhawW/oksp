@@ -4,6 +4,7 @@ from datetime import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
+from django.core.files.base import ContentFile
 
 from .forms import DocUploadForm
 from .htmlify import HTMLifier
@@ -33,14 +34,15 @@ def markdown_editor(request):
     text = request.GET.get('text')
     title = request.GET.get('title')
     if text and title:
-        file = open(title + '.docx', 'w')
-        file.write(text)
-        file.close()
-        filename = html.convert(file)
-        doc = Documentation(name=request.POST['name'],
+        #Save this file
+        myfile = ContentFile(bytes(text, 'utf-8'))
+        filename = html.convert(myfile)
+        doc = Documentation(name=title,
                             doc_file=filename,
                             pub_date=datetime.now())
         doc.save()
+
+
 
     return render(request, "docupload/markdown.html")
 

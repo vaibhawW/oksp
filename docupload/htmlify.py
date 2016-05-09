@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from django.conf import settings
 
 
-def get_html(doc_file):
+def get_html(doc_file, format = None):
     '''Uses pypandoc to convert uploaded file to HTML5'''
 
     tmp_loc = '/tmp/uploaded_' + str(doc_file)
@@ -21,7 +21,8 @@ def get_html(doc_file):
     html = pypandoc.convert(
         tmp_loc,
         'html5',
-        extra_args=['--extract-media=/tmp']
+        extra_args=['--extract-media=/tmp'],
+        format=format,
         )
 
     return html
@@ -59,10 +60,13 @@ class HTMLifier():
         ext = file_name.split('.')[-1]
         file_name = file_name[:len(file_name) - len(ext) - 1]
         doc_dir = self.doc_base_path
-
-        html = get_html(doc_file)
-        html = shift_media(html, file_name, '/tmp/media')
-
+        if ext == 'Raw content':
+            html = get_html(doc_file, 'md')
+            html = shift_media(html, file_name, '/tmp/media')
+        else:
+            html = get_html(doc_file)
+            html = shift_media(html, file_name, '/tmp/media')
+        
         with open(doc_dir + file_name + '.html', 'wb') as doc_stored:
             doc_stored.write(bytes(html, 'utf-8'))
 
