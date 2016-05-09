@@ -1,6 +1,6 @@
 {% extends "docupload/base.html" %}
 
-{% block style %}
+{% block style %} 
     body {
         background: black;
     }
@@ -21,9 +21,15 @@
     <div class="jumbotron" style="background: black;">
         <h1 style="text-align: center; color: white;">WYSIWYG Editor</h1>
         <hr/>
-        <textarea name="editor1"></textarea>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Title" name="title" value="{{ request.GET.title }}">
+            </div>
+            <textarea id="sourceTA" rows="25" class="well" placeholder="Start writing here" name="text" value="{{ request.GET.text }}"></textarea>
+            <button class="btn btn-primary" type="submit" style="margin-top: 0.5em;">Save</button>
+        </form>
         <script>
-            CKEDITOR.replace( 'editor1' );
+            CKEDITOR.replace( 'text' );
             CKEDITOR.config.width = '100%';
             CKEDITOR.config.height = 500;
         </script>     

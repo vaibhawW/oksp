@@ -44,11 +44,23 @@ def markdown_editor(request):
         doc.save()
         return HttpResponseRedirect('/doc/')
 
-
-
     return render(request, "docupload/markdown.html")
 
 def wysiwyg_editor(request):
+    html = HTMLifier(doc_base_path=DOC_DIR)
+    text = request.GET.get('text')
+    title = request.GET.get('title')
+    if text and title:
+        #Save this file
+        myfile = ContentFile(bytes(text, 'utf-8'))
+        myfile.name = title
+        filename = html.convert(myfile)
+        doc = Documentation(name=title,
+                            doc_file=filename,
+                            pub_date=datetime.now())
+        doc.save()
+        return HttpResponseRedirect('/doc/')
+
     return render(request, "docupload/wysiwyg.html")
 
 def upload(request): 
