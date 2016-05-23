@@ -61,9 +61,9 @@ class HTMLifier():
         file_name = file_name[:len(file_name) - len(ext) - 1]
         doc_dir = self.doc_base_path
         if ext == 'Raw content':
+            file_name = doc_file.name
             html = get_html(doc_file, 'md')
             html = shift_media(html, file_name, '/tmp/media')
-            file_name = doc_file.name
         else:
             html = get_html(doc_file)
             html = shift_media(html, file_name, '/tmp/media')
