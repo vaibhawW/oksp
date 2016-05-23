@@ -7,8 +7,6 @@ import os
 import pypandoc
 from bs4 import BeautifulSoup
 
-from django.conf import settings
-
 
 def get_html(doc_file, format = None):
     '''Uses pypandoc to convert uploaded file to HTML5'''
