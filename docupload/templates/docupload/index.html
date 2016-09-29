@@ -1,23 +1,14 @@
 {% extends "docupload/base.html" %}
 
-{% block style %}
-    body {
-        background: black;
-    }
-    .form-group, h3 {
-        color: white;
-    }
-{% endblock style %}
-
 {% block bar %}
-    <div class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin: 0; padding: 0">
+    <div class="navbar" role="navigation" style="margin: 0; padding: 0">
         <a class="navbar-brand" rel="home" href='#' title="OKSP">OKSP</a>
     </div>
 {% endblock bar %}
 
 {% block content %}
     <div class="container-fluid" style="margin: 0; padding: 0;">    
-        <div class="jumbotron" style="background: black;">
+        <div class="jumbotron">
             <h3 style="text-align: center;">Fill out the Details</h3>
             <form method='POST' action="{% url 'docupload:upload' %}" enctype="multipart/form-data" role="form">{% csrf_token %}
                 <div class="form-group">

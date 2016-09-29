@@ -9,6 +9,10 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href='{% static "css/base.css" %}' />
+
+        <!-- Style files -->
+        <link rel="stylesheet" href="{% static 'docupload/css/base.css' %}" type = "text/css"/>
+
         {% block csslink %}
 
         {% endblock csslink %}
@@ -16,9 +20,6 @@
         
         {% endblock jslink %}
         <style>
-            .container-fluid .navbar .navbar-brand {
-                color: white;
-            }
             {% block style %}
             {% endblock style %}
         </style>
