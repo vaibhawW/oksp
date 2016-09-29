@@ -1,17 +1,19 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
+        {% load staticfiles %}
         <title>{% block head_title %}OKSP{% endblock head_title %}</title>
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'docupload/css/bootstrap.min.css' %}" type = "text/css"/>
         <link rel="stylesheet" type="text/css" href='{% static "css/base.css" %}' />
 
         <!-- Style files -->
         <link rel="stylesheet" href="{% static 'docupload/css/base.css' %}" type = "text/css"/>
+
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <script src="https://use.fontawesome.com/99c11e2bee.js"></script>
 
         {% block csslink %}
 
@@ -25,11 +27,18 @@
         </style>
     </head>
     <body>
-        <div class="container-fluid" style="margin: 0; padding: 0">
-            {% block bar %}
-                    
-            {% endblock bar %}  
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" style="color: white;">Online Knowledge Sharing Platform</a>
+            </div>
+        </nav>
+
+        <div class="page-header" style="text-align: center;">
+            <h1>IIT Bombay Documentation Portal</h1>
         </div>
+        {% block bar %}
+                
+        {% endblock bar %}  
         <div class="container-fluid" style="margin: 0; padding: 0">
             {% block content %}
                     
