@@ -139,7 +139,6 @@ target/
 # Django stuff:
 logs/*
 media/*
-staticfiles/*
 .phutil_module_cache
 
 !.gitkeep
