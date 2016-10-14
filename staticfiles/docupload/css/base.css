@@ -1,0 +1,53 @@
+html, body {
+  height:100%
+}
+
+hr {
+    border-color: #C0C0C0;
+}
+
+h1 {
+    color: #5F5764;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar-default {
+    background-color: #1B0732;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.doc-page-header {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+}
+
+label {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.doc-input {
+    padding-top: 3px;
+}
+
+.doc-header {
+    color: #6F2EB9;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 35px;
+    text-decoration: none;
+}
+
+.doc-header:hover {
+    color: #000000;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 35px;
+    text-decoration: none;
+}
