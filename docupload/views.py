@@ -83,6 +83,13 @@ def display(request, doc_id):
     '''View for /doc/<doc_id>/'''
 
     db_doc = Documentation.objects.filter(id=doc_id)[0]
-
-    with open('docupload/docs/' + str(db_doc.doc_file)) as doc:
-        return HttpResponse(doc)
+    ext = str(db_doc.doc_file).split('.')[-1]
+    if ext == 'pdf':
+        file = open('docupload/docs/' + str(db_doc.doc_file), 'r+b')
+        file.seek(0)
+        pdf = file.read()
+        file.close()
+        return HttpResponse(pdf, 'application/pdf')
+    else:
+        with open('docupload/docs/' + str(db_doc.doc_file)) as doc:
+            return HttpResponse(doc)
