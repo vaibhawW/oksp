@@ -58,6 +58,9 @@ class HTMLifier():
         ext = file_name.split('.')[-1]
         file_name = file_name[:len(file_name) - len(ext) - 1]
         doc_dir = self.doc_base_path
+        with open(doc_dir + file_name + '.' + ext, 'wb') as doc_stored:
+            for chunk in doc_file.chunks():
+                doc_stored.write(chunk)
         if ext == 'Raw content':
             file_name = doc_file.name
             html = get_html(doc_file, 'md')
@@ -67,7 +70,7 @@ class HTMLifier():
                 for chunk in doc_file.chunks():
                     doc_stored.write(chunk)
 
-            return file_name + '.pdf'
+            return file_name + '.pdf', ext
         else:
             html = get_html(doc_file)
             html = shift_media(html, file_name, '/tmp/media')
@@ -75,4 +78,4 @@ class HTMLifier():
         with open(doc_dir + file_name + '.html', 'wb') as doc_stored:
             doc_stored.write(bytes(html, 'utf-8'))
 
-        return file_name + '.html'
+        return file_name + '.html', ext
