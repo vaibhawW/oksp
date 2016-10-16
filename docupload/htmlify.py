@@ -62,6 +62,12 @@ class HTMLifier():
             file_name = doc_file.name
             html = get_html(doc_file, 'md')
             html = shift_media(html, file_name, '/tmp/media')
+        elif ext == 'pdf':
+            with open(doc_dir + file_name + '.pdf', 'wb') as doc_stored:
+                for chunk in doc_file.chunks():
+                    doc_stored.write(chunk)
+
+            return file_name + '.pdf'
         else:
             html = get_html(doc_file)
             html = shift_media(html, file_name, '/tmp/media')
