@@ -13,6 +13,7 @@ class Documentation(models.Model):
     #doc_file = models.FilePathField('../static/docs/')
     doc_file = models.FileField(upload_to = '%s/media/' %settings.BASE_DIR)
     pub_date = models.DateTimeField('date published')
+    extension = models.CharField(max_length=20, default='docx')
 
     def __str__(self):
         return self.name
