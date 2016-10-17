@@ -1,12 +1,12 @@
 import os
 from datetime import datetime
+from wsgiref.util import FileWrapper
 
 from django.core.files.base import ContentFile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
 from django.utils.encoding import smart_str
-from wsgiref.util import FileWrapper
 
 from .forms import DocUploadForm
 from .htmlify import HTMLifier
