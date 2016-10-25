@@ -10,6 +10,7 @@ class Documentation(models.Model):
     '''
 
     name = models.CharField(max_length=200)
+    description=models.TextField(default="")
     #doc_file = models.FilePathField('../static/docs/')
     doc_file = models.FileField(upload_to = '%s/media/' %settings.BASE_DIR)
     pub_date = models.DateTimeField('date published')
