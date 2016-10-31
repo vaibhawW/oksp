@@ -23,6 +23,16 @@ def index(request):
     template = loader.get_template('docupload/index.html')
     form = DocUploadForm()
 
+    query_string = ''
+    found_entries = None
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+        entry_query = get_query(query_string, ['name', 'description',])
+        print("Search Query", entry_query)
+        doc_list = Documentation.objects.filter(entry_query).order_by('-pub_date')
+
+    print(found_entries)
+
     context = {
         'doc_list': doc_list,
         'form': form,
