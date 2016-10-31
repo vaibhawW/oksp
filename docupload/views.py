@@ -41,12 +41,15 @@ def markdown_editor(request):
         myfile = ContentFile(bytes(text, 'utf-8'))
         myfile.name = title
         filename, ext = html.convert(myfile)
+        tags = request.GET.get('tags').split()
         doc = Documentation(name=title,
                             doc_file=filename,
                             description=description,
                             pub_date=datetime.now(),
                             extension=ext)
         doc.save()
+        for tag in tags:
+            doc.tags.add(tag)
         return HttpResponseRedirect('/doc/')
 
     return render(request, "docupload/markdown.html")
@@ -61,12 +64,15 @@ def wysiwyg_editor(request):
         myfile = ContentFile(bytes(text, 'utf-8'))
         myfile.name = title
         filename, ext = html.convert(myfile)
+        tags = request.GET.get('tags').split()
         doc = Documentation(name=title,
                             doc_file=filename,
                             description=description,
                             pub_date=datetime.now(),
                             extension=ext)
         doc.save()
+        for tag in tags:
+            doc.tags.add(tag)
         return HttpResponseRedirect('/doc/')
 
     return render(request, "docupload/wysiwyg.html")
@@ -80,12 +86,15 @@ def upload(request):
         form = DocUploadForm(request.POST or None, request.FILES or None)
         if form.is_valid():
             filename, ext = html.convert(request.FILES['doc_file'])
+            tags = form.cleaned_data['tags']
             doc = Documentation(name=request.POST['name'],
                                 description=request.POST['description'],
                                 doc_file=filename,
                                 pub_date=datetime.now(),
                                 extension=ext)
             doc.save()
+            for tag in tags:
+                doc.tags.add(tag)
     return HttpResponseRedirect('/doc/')
 
 

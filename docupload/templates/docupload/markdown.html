@@ -30,6 +30,9 @@
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Description" name="description" value="{{ request.GET.description }}">
             </div>
+            <div class="form-group">
+                <input id="id_tags" class="form-control" name="tags" type="text" placeholder="Enter tags here, separated by spaces">
+            </div>
             <textarea id="sourceTA" rows="34" class="well" placeholder="Start writing here" name="text" value="{{ request.GET.text }}"></textarea>
             <div id='targetDiv' class="well" contentEditable=false data-text="Preview"></div>
             <hr/>
@@ -53,3 +56,4 @@
         </script>
     </div>
 {% endblock content %}
+
