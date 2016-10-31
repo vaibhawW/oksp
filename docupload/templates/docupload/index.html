@@ -38,6 +38,16 @@
         </form>
         <hr/>
         <h3 class="doc-page-header">Documentation of projects</h3>
+        <div class="form-group">
+            <form method="GET" action="" role="search">
+                <div class="input-group">
+                    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}" class="form-control"></input>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="col-sm-12">
             {% if doc_list %}
                 {% for doc in doc_list %}
