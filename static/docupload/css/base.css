@@ -40,8 +40,11 @@ label {
 
 .doc-header {
     color: #6F2EB9;
+    display: inline-block;
+    float: left;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35px;
+    padding-right: 10px;
     text-decoration: none;
 }
 
@@ -50,4 +53,18 @@ label {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35px;
     text-decoration: none;
+}
+
+.doc-tag {
+    background-color: #faebcc;
+    display: inline-block;
+    margin-top: 3px;
+    padding: 6px;
+}
+
+.doc-description {
+    clear: both;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-top: 7px;
 }
