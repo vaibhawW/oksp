@@ -19,7 +19,7 @@ DOC_DIR = os.path.abspath(os.path.dirname(__name__)) + '/docupload/docs/'
 def index(request):
     '''View for /doc/'''
 
-    doc_list = Documentation.objects.all()
+    doc_list = Documentation.objects.all().order_by('-pub_date')
     template = loader.get_template('docupload/index.html')
     form = DocUploadForm()
 
@@ -49,7 +49,7 @@ def markdown_editor(request):
         #Save this file
         myfile = ContentFile(bytes(text, 'utf-8'))
         myfile.name = title
-        filename, ext = html.convert(myfile)
+        filename, ext = html.convert(myfile, 'md')
         tags = request.GET.get('tags').split()
         doc = Documentation(name=title,
                             doc_file=filename,
@@ -72,7 +72,7 @@ def wysiwyg_editor(request):
         #Save this file
         myfile = ContentFile(bytes(text, 'utf-8'))
         myfile.name = title
-        filename, ext = html.convert(myfile)
+        filename, ext = html.convert(myfile, 'docx')
         tags = request.GET.get('tags').split()
         doc = Documentation(name=title,
                             doc_file=filename,

@@ -51,29 +51,32 @@ class HTMLifier():
     def __init__(self, doc_base_path='.'):
         self.doc_base_path = doc_base_path
 
-    def convert(self, doc_file):
+    def convert(self, doc_file, editor_ext='docx'):
         '''Middleware function to interface with different <format>_convert functions'''
 
         file_name = str(doc_file)
         ext = file_name.split('.')[-1]
         file_name = file_name[:len(file_name) - len(ext) - 1]
         doc_dir = self.doc_base_path
-        with open(doc_dir + file_name + '.' + ext, 'wb') as doc_stored:
-            for chunk in doc_file.chunks():
-                doc_stored.write(chunk)
         if ext == 'Raw content':
             file_name = doc_file.name
             html = get_html(doc_file, 'md')
             html = shift_media(html, file_name, '/tmp/media')
-        elif ext == 'pdf':
+            ext = editor_ext
+        elif ext != 'pdf':
+            html = get_html(doc_file)
+            html = shift_media(html, file_name, '/tmp/media')
+
+        with open(doc_dir + file_name + '.' + ext, 'wb') as doc_stored:
+            for chunk in doc_file.chunks():
+                doc_stored.write(chunk)
+
+        if ext == 'pdf':
             with open(doc_dir + file_name + '.pdf', 'wb') as doc_stored:
                 for chunk in doc_file.chunks():
                     doc_stored.write(chunk)
 
             return file_name + '.pdf', ext
-        else:
-            html = get_html(doc_file)
-            html = shift_media(html, file_name, '/tmp/media')
         
         with open(doc_dir + file_name + '.html', 'wb') as doc_stored:
             doc_stored.write(bytes(html, 'utf-8'))
