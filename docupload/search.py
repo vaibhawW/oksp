@@ -13,9 +13,10 @@ def normalize_query(query_string,
         ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
     
     '''
+    query_string = query_string.lower()
     return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)] 
 
-def get_query(query_string, search_fields):
+def get_query(query_string, search_fields, search_tags):
     ''' Returns a query, that is a combination of Q objects. That combination
         aims to search keywords within a model by testing the given search fields.
     
@@ -34,4 +35,7 @@ def get_query(query_string, search_fields):
             query = or_query
         else:
             query = query | or_query
+    if search_tags:
+        tag_query = Q(**{"tags__slug__in": terms})
+        query = query | tag_query
     return query
