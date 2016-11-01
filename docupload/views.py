@@ -133,11 +133,3 @@ def download_original(request, doc_id):
     response = HttpResponse(FileWrapper(file), content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(full_filename)
     return response
-
-def search(request):
-    query_string = ''
-    found_entries = None
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        entry_query = get_query(query_string, ['title', 'body',])
-        found_entries = Entry.objects.filter(entry_query).order_by('-pub_date')
