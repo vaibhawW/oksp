@@ -11,6 +11,7 @@ from django.utils.encoding import smart_str
 from .forms import DocUploadForm
 from .htmlify import HTMLifier
 from .models import Documentation
+from .search import get_query
 
 DOC_DIR = os.path.abspath(os.path.dirname(__name__)) + '/docupload/docs/'
 
@@ -21,6 +22,14 @@ def index(request):
     doc_list = Documentation.objects.all()
     template = loader.get_template('docupload/index.html')
     form = DocUploadForm()
+
+    query_string = ''
+    found_entries = None
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+        entry_query = get_query(query_string, ['name', 'description',], True)
+        doc_list = Documentation.objects.filter(
+            entry_query).distinct().order_by('-pub_date')
 
     context = {
         'doc_list': doc_list,
