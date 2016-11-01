@@ -37,16 +37,19 @@
             </div>
         </form>
         <hr/>
-        <h3 class="doc-page-header">Documentation of projects</h3>
-        <div class="form-group">
-            <form method="GET" action="" role="search">
-                <div class="input-group">
-                    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}" class="form-control"></input>
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Search</button>
+        <div class="row">
+            <h3 class="doc-page-header col-sm-4" style="margin-top: 7px;">Documentation of projects</h3>
+            <div class="col-sm-4"></div>
+            <div class="form-group col-sm-4">
+                <form method="GET" action="" role="search">
+                    <div class="input-group">
+                        <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}" class="form-control"></input>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
         <div class="col-sm-12">
             {% if doc_list %}
