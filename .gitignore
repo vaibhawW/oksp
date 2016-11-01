@@ -138,7 +138,7 @@ target/
 ## Project Specific
 # Django stuff:
 logs/*
-media/*
+media/docs/*
 .phutil_module_cache
 
 !.gitkeep
