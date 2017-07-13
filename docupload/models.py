@@ -12,7 +12,7 @@ class Documentation(models.Model):
 
     name = models.CharField(max_length=200)
     description=models.TextField(default="")
-    doc_file = models.FileField(upload_to = '%s/media/' %settings.BASE_DIR)
+    doc_file = models.FileField(upload_to = '%s/media/' %settings.BASE_DIR[1:])
     pub_date = models.DateTimeField('date published')
     extension = models.CharField(max_length=20, default='docx')
     tags = TaggableManager()

@@ -145,3 +145,5 @@ media/docs/*
 oksp/settings/conf.py
 
 docupload/docs/*
+/oksp/settings/conf.py
+*.pyc
