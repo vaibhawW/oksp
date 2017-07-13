@@ -19,6 +19,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^doc/', include('docupload.urls', namespace='docupload')),
     url(r'^admin/', admin.site.urls),
+    # url(r'^doc/', include('docupload.urls', namespace='docupload')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

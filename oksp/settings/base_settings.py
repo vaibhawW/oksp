@@ -15,28 +15,34 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
+APPEND_SLASH = True
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # Application definition
 
 INSTALLED_APPS = [
-    'docupload.apps.DocuploadConfig',
+    # Custom Apps, add your apps here
+    # 'account',
+    # 'hacker_news',
+    # 'oksp',
+    # 'taggit',
+    # 'docupload.apps.DocuploadConfig',
+    
+    # Pre Installed Apps, try not to modify it
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
-    'hacker_news',
-    'oksp',
-    'taggit',
 ]
 
 MIDDLEWARE_CLASSES = [
+    #Custom Middlewares, add your middlewares here
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+    # Pre Installed Middlewares, try not to modify it
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
