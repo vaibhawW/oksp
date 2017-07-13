@@ -1,6 +1,6 @@
 [![Code Health](https://landscape.io/github/stabiitb/oksp/master/landscape.svg?style=flat-square)](https://landscape.io/github/stabiitb/oksp/master) [![Build Status](https://img.shields.io/travis/stabiitb/oksp.svg?style=flat-square)](https://travis-ci.org/stabiitb/oksp) [![Requirements Status](https://img.shields.io/requires/github/stabiitb/oksp.svg?style=flat-square)](https://requires.io/github/stabiitb/oksp/requirements/?branch=master) [![Coverage Status](https://img.shields.io/coveralls/stabiitb/oksp.svg?style=flat-square)](https://coveralls.io/github/stabiitb/oksp?branch=master)
 
-# Online Knowledge Sharing Platform
+#Online Knowledge Sharing Platform
 
 Online Knowledge Sharing Platform, aka **OKSP** 
 
@@ -113,9 +113,30 @@ We have tried to simplify the process as much as possible. However, if you find 
 
 Hacking OKSP
 -----------------
-This project is entirely open source, and licensed under the **MIT License**. Contributions welcome!
+This project is entirely open source, and licensed under the **MIT License**. Contributions welcome!<br>
+	
 
 Some notes on working on the code:
++ Obviously, since we are working on Django, we will follow the [Coding Style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) as specified by official django documentation.
 
-1.	Comment things
-2.	
++	Nomenclature
+	+ Variables names should start in lowercase [a-z].<br>
+	+ **Letter-case separated words** to be followed.<br>
+	+ 4 space indentation.
+	+ namespacing is must.
++	Commenting
+	+ All files, functions, classes should be commented properly.
++	Tests
+	+ Tests are must. Test everything. 
+	+ Previous tests should pass.
++	Other Specifications
+	+ If you are working on local development server, and have used some additional python packages, add them to _\<home>/requirements/common.txt_ with the version of package.
+	+ If you want to add some additional packages to production server, add them to _\<home>/requirements/prodution.txt_ with the version of the package
+
+Before submitting a Pull Request, please check that all test are passing. Also mention clearly what you have added/improved/corrected in the project.
+
+Fork this to begin contributing.
+
+Final Notes
+----------------------
+We will soon be hosting this on our STAB website. Cheers :)
