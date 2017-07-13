@@ -1,6 +1,6 @@
 [![Code Health](https://landscape.io/github/stabiitb/oksp/master/landscape.svg?style=flat-square)](https://landscape.io/github/stabiitb/oksp/master) [![Build Status](https://img.shields.io/travis/stabiitb/oksp.svg?style=flat-square)](https://travis-ci.org/stabiitb/oksp) [![Requirements Status](https://img.shields.io/requires/github/stabiitb/oksp.svg?style=flat-square)](https://requires.io/github/stabiitb/oksp/requirements/?branch=master) [![Coverage Status](https://img.shields.io/coveralls/stabiitb/oksp.svg?style=flat-square)](https://coveralls.io/github/stabiitb/oksp?branch=master)
 
-# Online Knowledge Sharing Platform
+#Online Knowledge Sharing Platform
 
 Online Knowledge Sharing Platform, aka **OKSP** 
 
@@ -12,11 +12,11 @@ Installation on local machine
 -----------------
 We have tried to simplify the process as much as possible. However, if you find trouble installing or working on this project, feel free to contact us on gitter or our mails, as given below. We have used postgresSQL for database in this project. Also we assume you have create/delete access to database in DB. If you don't, contact your administrator. If you are the administrator, check out the [Additional Helps](#additionalHelps)
 <ul style="padding-left:50px;list-style-type:disc">
-  <li><a href="#quickSetup">Quick Setup]</a></li>
-  <li><a href="#requiredSoftwares">Required Softwares]</a></li>
-  <li><a href="#requiredPythonPackages">Required Python Packages]</a></li>
-  <li><a href="#settingUpLocalserver">Seting up localserver]</a></li>
-  <li><a href="#additionalHelps">Additional Helps]</a></li>
+  <li><a href="#quickSetup">Quick Setup</a></li>
+  <li><a href="#requiredSoftwares">Required Softwares</a></li>
+  <li><a href="#requiredPythonPackages">Required Python Packages</a></li>
+  <li><a href="#settingUpLocalserver">Seting up localserver</a></li>
+  <li><a href="#additionalHelps">Additional Helps</a></li>
 </ul>
 
  + ### Quick Setup  <a name="quickSetup"></a>
