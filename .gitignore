@@ -139,12 +139,14 @@ target/
 # Django stuff:
 logs/*
 media/docs/*
+migrations/
 .phutil_module_cache
 
 !.gitkeep
 oksp/settings/conf.py
-
 docupload/docs/*
-/oksp/settings/conf.py
-*.pyc
-*/migrations/*
+
+!.gitignore
+.gitkeep
+
+!*/
